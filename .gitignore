@@ -83,6 +83,7 @@ target/
 *.war
 *.ear
 *.db
+.jpb
 
 ######################
 # Windows
