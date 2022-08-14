@@ -1,7 +1,6 @@
 package com.example.spring5recipeapp.domain;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,6 +26,14 @@ public class Ingredient {
 
   @ManyToOne
   private Recipe recipe;
+
+  public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeasure,
+      Recipe recipe) {
+    this.description = description;
+    this.amount = amount;
+    this.unitOfMeasure = unitOfMeasure;
+    this.recipe = recipe;
+  }
 
   public Long getId() {
     return id;
@@ -66,37 +73,5 @@ public class Ingredient {
 
   public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
     this.unitOfMeasure = unitOfMeasure;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-
-    Ingredient that = (Ingredient) o;
-
-    if (!Objects.equals(id, that.id)) {
-      return false;
-    }
-    if (!Objects.equals(description, that.description)) {
-      return false;
-    }
-    if (!Objects.equals(amount, that.amount)) {
-      return false;
-    }
-    return Objects.equals(recipe, that.recipe);
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (description != null ? description.hashCode() : 0);
-    result = 31 * result + (amount != null ? amount.hashCode() : 0);
-    result = 31 * result + (recipe != null ? recipe.hashCode() : 0);
-    return result;
   }
 }

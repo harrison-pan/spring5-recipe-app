@@ -1,6 +1,5 @@
 package com.example.spring5recipeapp.domain;
 
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,33 +44,5 @@ public class Category {
 
   public void setRecipes(Set<Recipe> recipes) {
     this.recipes = recipes;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-
-    Category category = (Category) o;
-
-    if (!Objects.equals(id, category.id)) {
-      return false;
-    }
-    if (!Objects.equals(description, category.description)) {
-      return false;
-    }
-    return Objects.equals(recipes, category.recipes);
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (description != null ? description.hashCode() : 0);
-    result = 31 * result + (recipes != null ? recipes.hashCode() : 0);
-    return result;
   }
 }
